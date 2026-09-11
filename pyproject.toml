@@ -1,0 +1,36 @@
+[build-system]
+requires = ["scikit-build-core>=0.9", "pybind11>=2.12"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "corsario"
+version = "1.1.0"
+description = "Fast reader for CORSIKA .DAT particle-output files, with CSV/JSON/HDF5 export"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "Isaac Cantú" }
+]
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.22",
+    "pandas>=1.4",
+]
+
+[project.optional-dependencies]
+hdf5 = ["h5py>=3.0"]
+dev = ["pytest>=7.0", "build"]
+
+[project.urls]
+Repository = "https://github.com/isaac-cantu/corsario"
+
+[project.scripts]
+corsario-convert = "corsario.cli:convert_main"
+corsario-inspect = "corsario.cli:inspect_main"
+
+[tool.scikit-build]
+wheel.packages = ["python/corsario"]
+cmake.build-type = "Release"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
