@@ -1,7 +1,7 @@
 pybind11/
 dat_files/
 experiments/
-python/
+
 
 *.csv
 particles.csv
